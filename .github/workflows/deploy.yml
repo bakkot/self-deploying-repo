@@ -16,4 +16,4 @@ jobs:
       - run: ./scripts/build.sh
       - run: ./scripts/deploy.sh
         env:
-          GH_DEPLOY_KEY: ${{ secrets.GH_DEPLOY_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
