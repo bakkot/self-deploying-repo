@@ -1,0 +1,19 @@
+name: 'Self-Deploy'
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: 'deploy github pages'
+    runs-on: ubuntu-latest
+    if: ${{ github.repository == 'bakkot/self-deploying-repo' }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: ./scripts/build.sh
+      - run: ./scripts/deploy.sh
+        env:
+          GH_DEPLOY_KEY: ${{ secrets.GH_DEPLOY_KEY }}
